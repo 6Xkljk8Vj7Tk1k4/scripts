@@ -1,8 +1,8 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3.5
 
 #
 # usage:
-# ./sendemail.py "subject" "email body"
+# ./sendemail.py "subject" "email body \n with newline"
 #
 
 import sys
@@ -12,7 +12,7 @@ from smtplib import SMTP_SSL as SMTP
 sender = 'sender@domain.ltd'
 recipients = ['user1@domain.ltd', 'user2@domain.ltd']
 
-msg = MIMEText(sys.argv[2])
+msg = MIMEText(sys.argv[2].encode().decode("unicode-escape"), "plain")
 msg['Subject'] = sys.argv[1]
 msg['From'] = sender
 msg['To'] = ", ".join(recipients)
